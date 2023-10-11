@@ -1,7 +1,7 @@
 MVI C, 00H
 LDA 2000H
 LXI H, 2001H
-ADD M
+ADD M             // SUB M
 JNC L
 INR C
 L: STA 2005H

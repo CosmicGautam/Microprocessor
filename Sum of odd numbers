@@ -1,0 +1,21 @@
+// Input from 6000H to 6009H
+MVI B, 0AH ;Ten numbers of input data
+MVI C, 00H ;Initialize carry = 0
+MVI D, 00H ;Initialize Sum = 0
+LXI H, 6000H
+LOOP: MOV A, M
+ANI 01H
+JZ EVEN
+MOV A, M
+ADD D
+JNC NOCARRY
+INR C
+NOCARRY: MOV D, A
+EVEN: INX H
+DCR B
+JNZ LOOP
+MOV A, D
+STA 6010H
+MOV A, C
+STA 6011H
+HLT
